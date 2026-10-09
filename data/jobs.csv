@@ -1,0 +1,532 @@
+Job_Name,Application,Job_Type,Frequency,Platform,Dependency
+PAYROLL_LOAD,Payroll,ETL,Daily,Unix,PAYROLL_START
+PAYROLL_VALIDATION,Payroll,Validation,Daily,Unix,PAYROLL_LOAD
+PAYROLL_REPORT,Payroll,Report,Daily,Unix,PAYROLL_VALIDATION
+PAYROLL_ARCHIVE,Payroll,Archive,Weekly,Unix,PAYROLL_REPORT
+SALES_LOAD,Sales,ETL,Daily,Linux,SALES_START
+SALES_VALIDATION,Sales,Validation,Daily,Linux,SALES_LOAD
+SALES_REPORT,Sales,Report,Daily,Linux,SALES_VALIDATION
+SALES_ARCHIVE,Sales,Archive,Weekly,Linux,SALES_REPORT
+CUSTOMER_LOAD,Customer,ETL,Daily,Unix,CUSTOMER_START
+CUSTOMER_VALIDATION,Customer,Validation,Daily,Unix,CUSTOMER_LOAD
+CUSTOMER_REPORT,Customer,Report,Daily,Unix,CUSTOMER_VALIDATION
+CUSTOMER_ARCHIVE,Customer,Archive,Weekly,Unix,CUSTOMER_REPORT
+INVOICE_LOAD,Finance,ETL,Daily,Linux,INVOICE_START
+INVOICE_VALIDATION,Finance,Validation,Daily,Linux,INVOICE_LOAD
+INVOICE_REPORT,Finance,Report,Daily,Linux,INVOICE_VALIDATION
+INVOICE_ARCHIVE,Finance,Archive,Weekly,Linux,INVOICE_REPORT
+HR_LOAD,HR,ETL,Daily,Unix,HR_START
+HR_VALIDATION,HR,Validation,Daily,Unix,HR_LOAD
+HR_REPORT,HR,Report,Daily,Unix,HR_VALIDATION
+HR_ARCHIVE,HR,Archive,Weekly,Unix,HR_REPORT
+CONTROL_M_START,Control-M,Job Scheduling,Daily,Control-M,CONTROL_M_TRIGGER
+CONTROL_M_LOAD,Control-M,Batch Processing,Daily,Control-M,CONTROL_M_START
+CONTROL_M_VALIDATION,Control-M,Validation,Daily,Control-M,CONTROL_M_LOAD
+CONTROL_M_MONITORING,Control-M,Monitoring,Continuous,Control-M,CONTROL_M_VALIDATION
+CONTROL_M_SCHEDULING,Control-M,Scheduling,Daily,Control-M,CONTROL_M_LOAD
+CONTROL_M_FILE_TRANSFER,Control-M,File Transfer,Daily,Control-M,CONTROL_M_SCHEDULING
+CONTROL_M_ALERT,Control-M,Alert Management,Continuous,Control-M,CONTROL_M_MONITORING
+CONTROL_M_FAILURE_RETRY,Control-M,Failure Recovery,Daily,Control-M,CONTROL_M_ALERT
+CONTROL_M_REPORT,Control-M,Reporting,Daily,Control-M,CONTROL_M_MONITORING
+SERVICENOW_INCIDENT,ServiceNow,Incident Management,Daily,Cloud,SERVICENOW_START
+SERVICENOW_CHANGE,ServiceNow,Change Management,Daily,Cloud,SERVICENOW_INCIDENT
+SERVICENOW_REQUEST,ServiceNow,Service Request,Daily,Cloud,SERVICENOW_START
+SERVICENOW_PROBLEM,ServiceNow,Problem Management,Weekly,Cloud,SERVICENOW_INCIDENT
+SERVICENOW_CMDB,ServiceNow,CMDB Management,Daily,Cloud,SERVICENOW_REQUEST
+SERVICENOW_WORKFLOW,ServiceNow,Workflow Automation,Daily,Cloud,SERVICENOW_CHANGE
+SERVICENOW_API,ServiceNow,API Integration,Daily,Cloud,SERVICENOW_WORKFLOW
+SERVICENOW_REPORT,ServiceNow,Reporting,Daily,Cloud,SERVICENOW_INCIDENT
+XMatter_ALERT,XMatters,Alert Management,Continuous,XMatters,XM_START
+XMatter_NOTIFICATION,XMatters,Notification,Continuous,XMatters,XMatter_ALERT
+XMatter_INCIDENT,XMatters,Incident Notification,Daily,XMatters,XMatter_ALERT
+XMatter_ESCALATION,XMatters,Escalation Management,Daily,XMatters,XMatter_INCIDENT
+XMatter_WORKFLOW,XMatters,Workflow Automation,Daily,XMatters,XMatter_ESCALATION
+BMC_HELIX_START,BMC Helix,ITSM,Daily,BMC Helix,BMC_HELIX_TRIGGER
+BMC_HELIX_INCIDENT,BMC Helix,Incident Management,Daily,BMC Helix,BMC_HELIX_START
+BMC_HELIX_CHANGE,BMC Helix,Change Management,Daily,BMC Helix,BMC_HELIX_INCIDENT
+BMC_HELIX_PROBLEM,BMC Helix,Problem Management,Weekly,BMC Helix,BMC_HELIX_INCIDENT
+BMC_HELIX_MONITORING,BMC Helix,Monitoring,Continuous,BMC Helix,BMC_HELIX_INCIDENT
+BMC_HELIX_API,BMC Helix,API Integration,Daily,BMC Helix,BMC_HELIX_CHANGE
+SQL_DATA_LOAD,SQL,Database Processing,Daily,SQL Server,SQL_START
+SQL_VALIDATION,SQL,Database Validation,Daily,SQL Server,SQL_DATA_LOAD
+SQL_REPORT,SQL,Database Reporting,Daily,SQL Server,SQL_VALIDATION
+SQL_BACKUP,SQL,Database Backup,Daily,SQL Server,SQL_DATA_LOAD
+SQL_MAINTENANCE,SQL,Database Maintenance,Weekly,SQL Server,SQL_BACKUP
+SQL_PERFORMANCE,SQL,Performance Monitoring,Daily,SQL Server,SQL_MAINTENANCE
+ORACLE_DATA_LOAD,Oracle,Database Processing,Daily,Oracle,ORACLE_START
+ORACLE_BACKUP,Oracle,Database Backup,Daily,Oracle,ORACLE_DATA_LOAD
+ORACLE_VALIDATION,Oracle,Database Validation,Daily,Oracle,ORACLE_DATA_LOAD
+ORACLE_REPORT,Oracle,Database Reporting,Daily,Oracle,ORACLE_VALIDATION
+ORACLE_MAINTENANCE,Oracle,Database Maintenance,Weekly,Oracle,ORACLE_BACKUP
+ORACLE_MONITORING,Oracle,Database Monitoring,Continuous,Oracle,ORACLE_MAINTENANCE
+INFORMATICA_START,Informatica,ETL,Daily,Informatica,INFORMATICA_TRIGGER
+INFORMATICA_EXTRACT,Informatica,Data Extraction,Daily,Informatica,INFORMATICA_START
+INFORMATICA_TRANSFORM,Informatica,Data Transformation,Daily,Informatica,INFORMATICA_EXTRACT
+INFORMATICA_LOAD,Informatica,Data Loading,Daily,Informatica,INFORMATICA_TRANSFORM
+INFORMATICA_VALIDATION,Informatica,Data Validation,Daily,Informatica,INFORMATICA_LOAD
+INFORMATICA_REPORT,Informatica,Reporting,Daily,Informatica,INFORMATICA_VALIDATION
+AUTOSYS_START,Autosys,Job Scheduling,Daily,Autosys,AUTOSYS_TRIGGER
+AUTOSYS_BATCH,Autosys,Batch Processing,Daily,Autosys,AUTOSYS_START
+AUTOSYS_MONITORING,Autosys,Monitoring,Continuous,Autosys,AUTOSYS_BATCH
+AUTOSYS_FAILURE,Autosys,Failure Recovery,Daily,Autosys,AUTOSYS_MONITORING
+AUTOSYS_ALERT,Autosys,Alert Management,Continuous,Autosys,AUTOSYS_MONITORING
+AUTOSYS_REPORT,Autosys,Reporting,Daily,Autosys,AUTOSYS_BATCH
+AIRFLOW_DAG,Apache Airflow,Workflow Scheduling,Daily,Linux,AIRFLOW_START
+AIRFLOW_ETL,Apache Airflow,ETL,Daily,Linux,AIRFLOW_DAG
+AIRFLOW_DATA_LOAD,Apache Airflow,Data Processing,Daily,Linux,AIRFLOW_ETL
+AIRFLOW_VALIDATION,Apache Airflow,Validation,Daily,Linux,AIRFLOW_DATA_LOAD
+AIRFLOW_MONITORING,Apache Airflow,Monitoring,Continuous,Linux,AIRFLOW_DAG
+AIRFLOW_ALERT,Apache Airflow,Alert Management,Continuous,Linux,AIRFLOW_MONITORING
+JENKINS_BUILD,Jenkins,Build Automation,Daily,Linux,JENKINS_START
+JENKINS_TEST,Jenkins,Testing,Daily,Linux,JENKINS_BUILD
+JENKINS_DEPLOY,Jenkins,Deployment,Daily,Linux,JENKINS_TEST
+JENKINS_PIPELINE,Jenkins,CI/CD Pipeline,Daily,Linux,JENKINS_BUILD
+JENKINS_MONITORING,Jenkins,Monitoring,Continuous,Linux,JENKINS_PIPELINE
+JENKINS_ROLLBACK,Jenkins,Deployment Recovery,Daily,Linux,JENKINS_DEPLOY
+GITHUB_CODE,Github,Source Control,Daily,Cloud,GITHUB_START
+GITHUB_REVIEW,Github,Code Review,Daily,Cloud,GITHUB_CODE
+GITHUB_ACTIONS,Github,CI/CD Automation,Daily,Cloud,GITHUB_REVIEW
+GITHUB_SECURITY,Github,Security Scanning,Daily,Cloud,GITHUB_ACTIONS
+LINUX_MONITORING,Linux,System Monitoring,Continuous,Linux,LINUX_START
+LINUX_BACKUP,Linux,System Backup,Daily,Linux,LINUX_START
+LINUX_LOGGING,Linux,Log Management,Continuous,Linux,LINUX_MONITORING
+LINUX_PATCHING,Linux,Patch Management,Weekly,Linux,LINUX_MONITORING
+LINUX_FILE_TRANSFER,Linux,File Transfer,Daily,Linux,LINUX_START
+WINDOWS_MONITORING,Windows,System Monitoring,Continuous,Windows,WINDOWS_START
+WINDOWS_BACKUP,Windows,System Backup,Daily,Windows,WINDOWS_START
+WINDOWS_PATCHING,Windows,Patch Management,Weekly,Windows,WINDOWS_MONITORING
+POWERSHELL_AUTOMATION,PowerShell,Automation,Daily,Windows,POWERSHELL_START
+POWERSHELL_MONITORING,PowerShell,Monitoring,Continuous,Windows,POWERSHELL_AUTOMATION
+AWS_EC2_MONITORING,AWS,Cloud Monitoring,Continuous,AWS,AWS_START
+AWS_S3_LOAD,AWS,Data Processing,Daily,AWS,AWS_START
+AWS_LAMBDA,AWS,Serverless Processing,Daily,AWS,AWS_S3_LOAD
+AWS_GLUE,AWS,ETL,Daily,AWS,AWS_LAMBDA
+AWS_BACKUP,AWS,Cloud Backup,Daily,AWS,AWS_EC2_MONITORING
+AZURE_VM_MONITORING,Azure,Cloud Monitoring,Continuous,Azure,AZURE_START
+AZURE_DATA_FACTORY,Azure,ETL,Daily,Azure,AZURE_START
+AZURE_FUNCTION,Azure,Serverless Processing,Daily,Azure,AZURE_DATA_FACTORY
+AZURE_STORAGE,Azure,Data Storage,Daily,Azure,AZURE_START
+AZURE_BACKUP,Azure,Cloud Backup,Daily,Azure,AZURE_VM_MONITORING
+GCP_DATA_LOAD,Google Cloud,Data Processing,Daily,GCP,GCP_START
+GCP_MONITORING,Google Cloud,Cloud Monitoring,Continuous,GCP,GCP_DATA_LOAD
+GCP_STORAGE,Google Cloud,Data Storage,Daily,GCP,GCP_START
+DOCKER_BUILD,Docker,Container Build,Daily,Linux,DOCKER_START
+DOCKER_DEPLOY,Docker,Container Deployment,Daily,Linux,DOCKER_BUILD
+DOCKER_MONITORING,Docker,Container Monitoring,Continuous,Linux,DOCKER_DEPLOY
+KUBERNETES_DEPLOY,Kubernetes,Container Deployment,Daily,Linux,KUBERNETES_START
+KUBERNETES_SERVICE,Kubernetes,Service Management,Daily,Linux,KUBERNETES_DEPLOY
+KUBERNETES_MONITORING,Kubernetes,Cluster Monitoring,Continuous,Linux,KUBERNETES_SERVICE
+KUBERNETES_ROLLBACK,Kubernetes,Deployment Recovery,Daily,Linux,KUBERNETES_DEPLOY
+TERRAFORM_INFRA,Terraform,Infrastructure Automation,Daily,Linux,TERRAFORM_START
+TERRAFORM_DEPLOY,Terraform,Infrastructure Deployment,Daily,Linux,TERRAFORM_INFRA
+ANSIBLE_AUTOMATION,Ansible,Configuration Automation,Daily,Linux,ANSIBLE_START
+ANSIBLE_DEPLOY,Ansible,Application Deployment,Daily,Linux,ANSIBLE_AUTOMATION
+SPLUNK_LOG,Splunk,Log Management,Continuous,Linux,SPLUNK_START
+SPLUNK_ALERT,Splunk,Alert Management,Continuous,Linux,SPLUNK_LOG
+SPLUNK_REPORT,Splunk,Reporting,Daily,Linux,SPLUNK_LOG
+DYNATRACE_MONITORING,Dynatrace,Application Monitoring,Continuous,Cloud,DYNATRACE_START
+DYNATRACE_ALERT,Dynatrace,Alert Management,Continuous,Cloud,DYNATRACE_MONITORING
+DYNATRACE_REPORT,Dynatrace,Performance Reporting,Daily,Cloud,DYNATRACE_MONITORING
+APPDYNAMICS_MONITORING,AppDynamics,Application Monitoring,Continuous,Cloud,APPDYNAMICS_START
+APPDYNAMICS_ALERT,AppDynamics,Alert Management,Continuous,Cloud,APPDYNAMICS_MONITORING
+SOLARWINDS_MONITORING,SolarWinds,Infrastructure Monitoring,Continuous,Windows,SOLARWINDS_START
+SOLARWINDS_ALERT,SolarWinds,Alert Management,Continuous,Windows,SOLARWINDS_MONITORING
+NAGIOS_MONITORING,Nagios,Infrastructure Monitoring,Continuous,Linux,NAGIOS_START
+NAGIOS_ALERT,Nagios,Alert Management,Continuous,Linux,NAGIOS_MONITORING
+NEWRLIC_MONITORING,NEW_RELIC,Application Monitoring,Continuous,Cloud,NEWRLIC_START
+NEWRLIC_ALERT,NEW_RELIC,Alert Management,Continuous,Cloud,NEWRLIC_MONITORING
+ETL_DATA_LOAD,ETL,Data Processing,Daily,Linux,ETL_START
+ETL_TRANSFORMATION,ETL,Data Transformation,Daily,Linux,ETL_DATA_LOAD
+ETL_VALIDATION,ETL,Data Validation,Daily,Linux,ETL_TRANSFORMATION
+ETL_REPORTING,ETL,Reporting,Daily,Linux,ETL_VALIDATION
+DATA_WAREHOUSE_LOAD,Data Warehouse,Data Loading,Daily,Linux,DATA_WAREHOUSE_START
+DATA_WAREHOUSE_VALIDATION,Data Warehouse,Data Validation,Daily,Linux,DATA_WAREHOUSE_LOAD
+DATA_WAREHOUSE_REPORT,Data Warehouse,Reporting,Daily,Linux,DATA_WAREHOUSE_VALIDATION
+API_INTEGRATION,API,API Integration,Daily,Cloud,API_START
+REST_API,REST API,API Processing,Daily,Cloud,API_INTEGRATION
+API_VALIDATION,API,API Validation,Daily,Cloud,REST_API
+SFTP_FILE_TRANSFER,SFTP,File Transfer,Daily,Linux,SFTP_START
+SFTP_VALIDATION,SFTP,File Validation,Daily,Linux,SFTP_FILE_TRANSFER
+SFTP_ARCHIVE,SFTP,File Archive,Daily,Linux,SFTP_VALIDATION
+PRODUCTION_MONITORING,Production Support,Production Monitoring,Continuous,Enterprise,PRODUCTION_START
+PRODUCTION_INCIDENT,Production Support,Incident Management,Daily,Enterprise,PRODUCTION_MONITORING
+PRODUCTION_RECOVERY,Production Support,Failure Recovery,Daily,Enterprise,PRODUCTION_INCIDENT
+APPLICATION_MONITORING,Application Support,Application Monitoring,Continuous,Enterprise,APPLICATION_START
+APPLICATION_INCIDENT,Application Support,Incident Management,Daily,Enterprise,APPLICATION_MONITORING
+APPLICATION_RECOVERY,Application Support,Failure Recovery,Daily,Enterprise,APPLICATION_INCIDENT
+ITSM_INCIDENT,ITSM,Incident Management,Daily,Enterprise,ITSM_START
+ITSM_CHANGE,ITSM,Change Management,Daily,Enterprise,ITSM_INCIDENT
+ITSM_PROBLEM,ITSM,Problem Management,Weekly,Enterprise,ITSM_INCIDENT
+ITSM_REQUEST,ITSM,Service Request,Daily,Enterprise,ITSM_START
+AUTOMATION_WORKFLOW,Automation,Workflow Automation,Daily,Enterprise,AUTOMATION_START
+AUTOMATION_MONITORING,Automation,Automation Monitoring,Continuous,Enterprise,AUTOMATION_WORKFLOW
+BACKUP_JOB,Backup,Backup Processing,Daily,Enterprise,BACKUP_START
+BACKUP_VALIDATION,Backup,Backup Validation,Daily,Enterprise,BACKUP_JOB
+BACKUP_RECOVERY,Backup,Recovery,Weekly,Enterprise,BACKUP_VALIDATION
+SECURITY_MONITORING,Security Operations,Security Monitoring,Continuous,Enterprise,SECURITY_START
+SECURITY_ALERT,Security Operations,Security Alert,Continuous,Enterprise,SECURITY_MONITORING
+SECURITY_REPORT,Security Operations,Security Reporting,Daily,Enterprise,SECURITY_ALERT
+SAP_BATCH,SAP,Batch Processing,Daily,SAP,SAP_START
+SAP_MONITORING,SAP,Application Monitoring,Continuous,SAP,SAP_BATCH
+SAP_REPORT,SAP,Reporting,Daily,SAP,SAP_MONITORING
+AI_SOLUTION_ARCHITECTURE,Artificial Intelligence,AI Solution Architecture,Daily,Cloud,AI_START
+AI_DATA_ANALYSIS,Artificial Intelligence,AI Data Analysis,Daily,Cloud,AI_SOLUTION_ARCHITECTURE
+AI_PREDICTION,Artificial Intelligence,AI Prediction,Daily,Cloud,AI_DATA_ANALYSIS
+AI_CLASSIFICATION,Artificial Intelligence,AI Classification,Daily,Cloud,AI_DATA_ANALYSIS
+AI_RECOMMENDATION,Artificial Intelligence,Recommendation Engine,Daily,Cloud,AI_MODEL_TRAINING
+AI_ANOMALY_DETECTION,Artificial Intelligence,Anomaly Detection,Continuous,Cloud,AI_MODEL_TRAINING
+AI_WORKFLOW,Artificial Intelligence,AI Workflow,Daily,Cloud,AI_AUTOMATION
+AI_DECISION_ENGINE,Artificial Intelligence,AI Decision Engine,Daily,Cloud,AI_MODEL_DEPLOYMENT
+AI_MODEL_SERVING,Artificial Intelligence,Model Serving,Continuous,Cloud,AI_MODEL_DEPLOYMENT
+AI_MODEL_EVALUATION,Artificial Intelligence,AI Model Evaluation,Daily,Cloud,AI_MODEL_VALIDATION
+AI_PROMPT_ENGINEERING,Artificial Intelligence,Prompt Engineering,Daily,Cloud,AI_ASSISTANT
+AI_AGENT,Artificial Intelligence,AI Agent,Daily,Cloud,AI_API_INTEGRATION
+AI_AGENT_WORKFLOW,Artificial Intelligence,AI Agent Workflow,Daily,Cloud,AI_AGENT
+AI_AUTOMATION,AI Automation,Workflow Automation,Daily,Cloud,AI_WORKFLOW
+AI_API_INTEGRATION,AI APIs,AI API Integration,Daily,Cloud,AI_API_START
+AI_API_MONITORING,AI APIs,API Monitoring,Continuous,Cloud,AI_API_INTEGRATION
+ML_DATA_CLEANING,Machine Learning,Data Cleaning,Daily,Python,ML_DATA_SOURCE
+ML_DATA_PREPROCESSING,Machine Learning,Data Preprocessing,Daily,Python,ML_DATA_CLEANING
+ML_FEATURE_ENGINEERING,Machine Learning,Feature Engineering,Daily,Python,ML_DATA_PREPARATION
+ML_FEATURE_SELECTION,Machine Learning,Feature Selection,Daily,Python,ML_FEATURE_ENGINEERING
+ML_CLASSIFICATION,Machine Learning,Classification,Daily,Python,ML_MODEL_TRAINING
+ML_REGRESSION,Machine Learning,Regression,Daily,Python,ML_MODEL_TRAINING
+ML_CLUSTERING,Machine Learning,Clustering,Daily,Python,ML_DATA_PREPARATION
+ML_ANOMALY_DETECTION,Machine Learning,Anomaly Detection,Continuous,Python,ML_MODEL_TRAINING
+ML_TIME_SERIES,Machine Learning,Time Series Prediction,Daily,Python,ML_DATA_PREPARATION
+ML_RECOMMENDATION,Machine Learning,Recommendation System,Daily,Python,ML_MODEL_TRAINING
+ML_MODEL_TRAINING,Machine Learning,Model Training,Daily,Python,ML_FEATURE_ENGINEERING
+ML_MODEL_VALIDATION,Machine Learning,Model Validation,Daily,Python,ML_MODEL_TRAINING
+ML_CROSS_VALIDATION,Machine Learning,Cross Validation,Daily,Python,ML_MODEL_VALIDATION
+ML_HYPERPARAMETER_TUNING,Machine Learning,Hyperparameter Tuning,Daily,Python,ML_MODEL_TRAINING
+ML_MODEL_DEPLOYMENT,Machine Learning,Model Deployment,Daily,Cloud,ML_MODEL_VALIDATION
+ML_MODEL_MONITORING,Machine Learning,Model Monitoring,Continuous,Cloud,ML_MODEL_DEPLOYMENT
+DEEP_LEARNING,Deep Learning,Deep Learning Model,Daily,Python,DL_DATA_PREPARATION
+DL_NEURAL_NETWORK,Deep Learning,Neural Network,Daily,Python,DEEP_LEARNING
+DL_CNN,Deep Learning,CNN Model,Daily,Python,DEEP_LEARNING
+DL_RNN,Deep Learning,RNN Model,Daily,Python,DEEP_LEARNING
+NLP_TEXT_PROCESSING,NLP,Text Processing,Daily,Python,NLP_DATA_SOURCE
+NLP_TEXT_CLASSIFICATION,NLP,Text Classification,Daily,Python,NLP_TEXT_PROCESSING
+NLP_SENTIMENT,NLP,Sentiment Analysis,Daily,Python,NLP_TEXT_PROCESSING
+NLP_NAMED_ENTITY,NLP,Named Entity Recognition,Daily,Python,NLP_TEXT_PROCESSING
+NLP_TEXT_SUMMARIZATION,NLP,Text Summarization,Daily,Cloud,NLP_MODEL
+GENAI_TEXT_GENERATION,Generative AI,Text Generation,Continuous,Cloud,GENAI_MODEL
+GENAI_IMAGE_GENERATION,Generative AI,Image Generation,Daily,Cloud,GENAI_MODEL
+GENAI_CONTENT_GENERATION,Generative AI,Content Generation,Daily,Cloud,GENAI_TEXT_GENERATION
+GENAI_MODEL_EVALUATION,Generative AI,Model Evaluation,Daily,Cloud,GENAI_MODEL
+GENAI_GUARDRAILS,Generative AI,AI Guardrails,Continuous,Cloud,GENAI_MODEL
+LLM_PROMPT,LLM,Prompt Processing,Continuous,Cloud,LLM_INFERENCE
+LLM_INFERENCE,LLM,LLM Inference,Continuous,Cloud,LLM_MODEL
+LLM_FINE_TUNING,LLM,Model Fine Tuning,Daily,Cloud,LLM_TRAINING
+LLM_EVALUATION,LLM,Model Evaluation,Daily,Cloud,LLM_INFERENCE
+LLM_GUARDRAILS,LLM,AI Guardrails,Continuous,Cloud,LLM_INFERENCE
+LLM_RAG,LLM,RAG Integration,Daily,Cloud,RAG_RETRIEVAL
+MLOPS_DATA_PIPELINE,MLOps,ML Data Pipeline,Daily,Cloud,MLOPS_START
+MLOPS_EXPERIMENT_TRACKING,MLOps,Experiment Tracking,Daily,Cloud,MLOPS_DATA_PIPELINE
+MLOPS_MODEL_REGISTRY,MLOps,Model Registry,Daily,Cloud,MLOPS_DATA_PIPELINE
+MLOPS_MODEL_VERSIONING,MLOps,Model Versioning,Daily,Cloud,MLOPS_MODEL_REGISTRY
+MLOPS_MODEL_SERVING,MLOps,Model Serving,Continuous,Cloud,MLOPS_MODEL_REGISTRY
+MLOPS_DRIFT_MONITORING,MLOps,Model Drift Monitoring,Continuous,Cloud,MLOPS_MODEL_SERVING
+MLOPS_MODEL_MONITORING,MLOps,Model Monitoring,Continuous,Cloud,MLOPS_MODEL_SERVING
+RAG_DOCUMENT_INGESTION,RAG,Document Ingestion,Daily,Cloud,RAG_START
+RAG_DOCUMENT_CHUNKING,RAG,Document Chunking,Daily,Cloud,RAG_DOCUMENT_INGESTION
+RAG_EMBEDDING,RAG,Embedding Generation,Daily,Cloud,RAG_DOCUMENT_CHUNKING
+RAG_RETRIEVAL,RAG,Document Retrieval,Continuous,Cloud,RAG_EMBEDDING
+RAG_RESPONSE,RAG,Response Generation,Continuous,Cloud,RAG_RETRIEVAL
+VECTOR_DATABASE,Vector Database,Vector Search,Continuous,Cloud,VECTOR_DATABASE_START
+VECTOR_INDEXING,Vector Database,Vector Indexing,Daily,Cloud,VECTOR_DATABASE
+VECTOR_SEARCH,Vector Database,Similarity Search,Continuous,Cloud,VECTOR_INDEXING
+COMPUTER_VISION,Computer Vision,Image Processing,Daily,Python,CV_DATA_SOURCE
+CV_IMAGE_CLASSIFICATION,Computer Vision,Image Classification,Daily,Python,COMPUTER_VISION
+CV_OBJECT_DETECTION,Computer Vision,Object Detection,Daily,Python,COMPUTER_VISION
+CV_IMAGE_SEGMENTATION,Computer Vision,Image Segmentation,Daily,Python,COMPUTER_VISION
+RECOMMENDATION_ENGINE,Recommendation Systems,Recommendation Engine,Daily,Python,ML_MODEL_TRAINING
+RECOMMENDATION_RANKING,Recommendation Systems,Recommendation Ranking,Daily,Python,RECOMMENDATION_ENGINE
+RECOMMENDATION_PERSONALIZATION,Recommendation Systems,Personalization,Daily,Cloud,RECOMMENDATION_ENGINE
+ANOMALY_DETECTION,Anomaly Detection,Anomaly Detection,Continuous,Python,ML_MODEL_TRAINING
+ANOMALY_MONITORING,Anomaly Detection,Anomaly Monitoring,Continuous,Cloud,ANOMALY_DETECTION
+MODEL_MONITORING,Model Monitoring,Model Performance Monitoring,Continuous,Cloud,MODEL_DEPLOYMENT
+MODEL_DRIFT,Model Monitoring,Model Drift Detection,Continuous,Cloud,MODEL_MONITORING
+MODEL_DEPLOYMENT,Model Deployment,Model Deployment,Daily,Cloud,MODEL_VALIDATION
+MODEL_SERVING,Model Deployment,Model Serving,Continuous,Cloud,MODEL_DEPLOYMENT
+MODEL_GOVERNANCE,Model Governance,AI Model Governance,Weekly,Cloud,MODEL_MONITORING
+MODEL_RISK,Model Governance,AI Model Risk,Weekly,Cloud,MODEL_GOVERNANCE
+MODEL_COMPLIANCE,Model Governance,AI Model Compliance,Weekly,Cloud,MODEL_GOVERNANCE
+WORD_DOCUMENTATION,Microsoft Word,Document Creation,Daily,Microsoft 365,WORD_START
+WORD_FORMATTING,Microsoft Word,Document Formatting,Daily,Microsoft 365,WORD_DOCUMENTATION
+WORD_TEMPLATES,Microsoft Word,Document Templates,Daily,Microsoft 365,WORD_DOCUMENTATION
+WORD_REPORTING,Microsoft Word,Report Preparation,Daily,Microsoft 365,WORD_FORMATTING
+WORD_MAIL_MERGE,Microsoft Word,Mail Merge,Daily,Microsoft 365,WORD_TEMPLATES
+EXCEL_DATA_ENTRY,Microsoft Excel,Data Entry,Daily,Microsoft 365,EXCEL_START
+EXCEL_FORMULAS,Microsoft Excel,Excel Formulas,Daily,Microsoft 365,EXCEL_DATA_ENTRY
+EXCEL_FUNCTIONS,Microsoft Excel,Excel Functions,Daily,Microsoft 365,EXCEL_FORMULAS
+EXCEL_PIVOT_TABLE,Microsoft Excel,Pivot Tables,Daily,Microsoft 365,EXCEL_DATA_ANALYSIS
+EXCEL_VLOOKUP,Microsoft Excel,VLOOKUP,Daily,Microsoft 365,EXCEL_FORMULAS
+EXCEL_XLOOKUP,Microsoft Excel,XLOOKUP,Daily,Microsoft 365,EXCEL_FORMULAS
+EXCEL_REPORTING,Microsoft Excel,Excel Reporting,Daily,Microsoft 365,EXCEL_DATA_ANALYSIS
+EXCEL_DASHBOARD,Microsoft Excel,Excel Dashboard,Daily,Microsoft 365,EXCEL_REPORTING
+EXCEL_DATA_ANALYSIS,Microsoft Excel,Data Analysis,Daily,Microsoft 365,EXCEL_DATA_ENTRY
+EXCEL_VBA,Microsoft Excel,VBA Automation,Daily,Microsoft 365,EXCEL_AUTOMATION
+EXCEL_AUTOMATION,Microsoft Excel,Office Automation,Daily,Microsoft 365,EXCEL_VBA
+POWERPOINT_PRESENTATION,Microsoft PowerPoint,Presentation Creation,Daily,Microsoft 365,POWERPOINT_START
+POWERPOINT_DESIGN,Microsoft PowerPoint,Presentation Design,Daily,Microsoft 365,POWERPOINT_PRESENTATION
+POWERPOINT_REPORTING,Microsoft PowerPoint,Presentation Reporting,Daily,Microsoft 365,POWERPOINT_DESIGN
+POWERPOINT_BUSINESS,Microsoft PowerPoint,Business Presentation,Daily,Microsoft 365,POWERPOINT_PRESENTATION
+OUTLOOK_EMAIL,Microsoft Outlook,Email Management,Daily,Microsoft 365,OUTLOOK_START
+OUTLOOK_CALENDAR,Microsoft Outlook,Calendar Management,Daily,Microsoft 365,OUTLOOK_EMAIL
+OUTLOOK_MEETING,Microsoft Outlook,Meeting Management,Daily,Microsoft 365,OUTLOOK_CALENDAR
+OUTLOOK_AUTOMATION,Microsoft Outlook,Email Automation,Daily,Microsoft 365,OUTLOOK_EMAIL
+TEAMS_CHAT,Microsoft Teams,Team Collaboration,Daily,Microsoft 365,TEAMS_START
+TEAMS_MEETING,Microsoft Teams,Online Meetings,Daily,Microsoft 365,TEAMS_CHAT
+TEAMS_SUPPORT,Microsoft Teams,Technical Support,Daily,Microsoft 365,TEAMS_MEETING
+SHAREPOINT_DOCUMENT,SharePoint,Document Management,Daily,Microsoft 365,SHAREPOINT_START
+SHAREPOINT_SITE,SharePoint,Site Management,Daily,Microsoft 365,SHAREPOINT_DOCUMENT
+SHAREPOINT_WORKFLOW,SharePoint,Workflow Automation,Daily,Microsoft 365,SHAREPOINT_SITE
+ONEDRIVE_STORAGE,OneDrive,Cloud File Storage,Daily,Microsoft 365,ONEDRIVE_START
+ONEDRIVE_SHARING,OneDrive,File Sharing,Daily,Microsoft 365,ONEDRIVE_STORAGE
+M365_ADMIN,Microsoft 365,Microsoft 365 Administration,Daily,Cloud,M365_START
+M365_USER_SUPPORT,Microsoft 365,User Support,Daily,Cloud,M365_ADMIN
+M365_SECURITY,Microsoft 365,Microsoft 365 Security,Continuous,Cloud,M365_ADMIN
+POWERBI_DATA,Power BI,Data Analysis,Daily,Microsoft 365,POWERBI_START
+POWERBI_DASHBOARD,Power BI,Dashboard Development,Daily,Microsoft 365,POWERBI_DATA
+POWERBI_REPORT,Power BI,Report Development,Daily,Microsoft 365,POWERBI_DASHBOARD
+POWERBI_VISUALIZATION,Power BI,Data Visualization,Daily,Microsoft 365,POWERBI_DATA
+POWERBI_REFRESH,Power BI,Data Refresh,Daily,Cloud,POWERBI_REPORT
+JAVA_DEVELOPMENT,Java,Java Development,Daily,Linux,JAVA_START
+JAVA_OOP,Java,Object Oriented Programming,Daily,Linux,JAVA_DEVELOPMENT
+JAVA_DEBUGGING,Java,Java Debugging,Daily,Linux,JAVA_DEVELOPMENT
+SPRING_BOOT,Spring Boot,Application Development,Daily,Linux,SPRING_START
+SPRING_API,Spring Boot,REST API Development,Daily,Linux,SPRING_BOOT
+SPRING_MICROSERVICE,Spring Boot,Microservices,Daily,Linux,SPRING_BOOT
+
+PYTHON_DEVELOPMENT,Python,Python Development,Daily,Linux,PYTHON_START
+PYTHON_AUTOMATION,Python,Automation Scripting,Daily,Linux,PYTHON_DEVELOPMENT
+PYTHON_DATA_ANALYSIS,Python,Data Analysis,Daily,Python,PYTHON_DEVELOPMENT
+PYTHON_AI,Python,AI Development,Daily,Python,PYTHON_DEVELOPMENT
+PYTHON_ML,Python,Machine Learning,Daily,Python,PYTHON_AI
+
+JAVASCRIPT_DEVELOPMENT,JavaScript,JavaScript Development,Daily,Cloud,JAVASCRIPT_START
+JAVASCRIPT_API,JavaScript,API Development,Daily,Cloud,JAVASCRIPT_DEVELOPMENT
+
+ANGULAR_COMPONENT,Angular,Angular Components,Daily,Cloud,ANGULAR_START
+ANGULAR_SERVICE,Angular,Angular Services,Daily,Cloud,ANGULAR_COMPONENT
+ANGULAR_ROUTING,Angular,Angular Routing,Daily,Cloud,ANGULAR_COMPONENT
+ANGULAR_API,Angular,Angular API Integration,Daily,Cloud,ANGULAR_SERVICE
+
+REACT_COMPONENT,React,React Components,Daily,Cloud,REACT_START
+REACT_HOOKS,React,React Hooks,Daily,Cloud,REACT_COMPONENT
+REACT_API,React,React API Integration,Daily,Cloud,REACT_COMPONENT
+
+HTML_DEVELOPMENT,HTML,Web Development,Daily,Cloud,HTML_START
+CSS_DEVELOPMENT,CSS,Web Styling,Daily,Cloud,CSS_START
+GIT_SOURCE_CONTROL,Git,Source Control,Daily,Cloud,GIT_START
+GITHUB_REPOSITORY,GitHub,Repository Management,Daily,Cloud,GIT_SOURCE_CONTROL
+GITHUB_ACTIONS_DEV,GitHub,CI/CD Automation,Daily,Cloud,GITHUB_REPOSITORY
+
+REST_API,REST API,REST API Development,Daily,Cloud,API_START
+API_INTEGRATION_DEV,API,API Integration,Daily,Cloud,API_START
+API_TESTING,API,API Testing,Daily,Cloud,API_INTEGRATION_DEV
+POSTMAN_API,Postman,API Testing,Daily,Cloud,API_TESTING
+SQL_DEVELOPMENT,SQL,SQL Development,Daily,Database,SQL_START
+SQL_QUERY,SQL,SQL Query,Daily,Database,SQL_DEVELOPMENT
+SQL_JOIN,SQL,SQL JOIN,Daily,Database,SQL_QUERY
+SQL_SUBQUERY,SQL,SQL Subquery,Daily,Database,SQL_QUERY
+SQL_GROUP_BY,SQL,GROUP BY and HAVING,Daily,Database,SQL_QUERY
+SQL_PROCEDURE,SQL,Stored Procedures,Daily,Database,SQL_DEVELOPMENT
+SQL_PERFORMANCE,SQL,SQL Performance Tuning,Daily,Database,SQL_DEVELOPMENT
+
+ORACLE_DATABASE,Oracle,Oracle Database,Daily,Database,ORACLE_START
+ORACLE_SQL,Oracle,Oracle SQL,Daily,Database,ORACLE_DATABASE
+ORACLE_PLSQL,Oracle,PLSQL Development,Daily,Database,ORACLE_SQL
+ORACLE_SUPPORT,Oracle,Oracle Production Support,Continuous,Database,ORACLE_DATABASE
+
+MYSQL_DATABASE,MySQL,MySQL Database,Daily,Database,MYSQL_START
+MYSQL_QUERY,MySQL,MySQL Query Development,Daily,Database,MYSQL_DATABASE
+POSTGRESQL_DATABASE,PostgreSQL,PostgreSQL Database,Daily,Database,POSTGRESQL_START
+POSTGRESQL_SQL,PostgreSQL,PostgreSQL SQL,Daily,Database,POSTGRESQL_DATABASE
+
+MONGODB_DATABASE,MongoDB,MongoDB Database,Daily,Cloud,MONGODB_START
+MONGODB_QUERY,MongoDB,MongoDB Query,Daily,Cloud,MONGODB_DATABASE
+NOSQL_DATABASE,NoSQL,NoSQL Database,Daily,Cloud,NOSQL_START
+
+DATA_ANALYSIS,Data Analytics,Data Analysis,Daily,Cloud,DATA_START
+DATA_CLEANING,Data Analytics,Data Cleaning,Daily,Cloud,DATA_ANALYSIS
+DATA_REPORTING,Data Analytics,Data Reporting,Daily,Cloud,DATA_ANALYSIS
+DATA_VISUALIZATION,Data Analytics,Data Visualization,Daily,Cloud,DATA_ANALYSIS
+DATA_DASHBOARD,Data Analytics,Dashboard Development,Daily,Cloud,DATA_VISUALIZATION
+
+ETL_DEVELOPMENT,ETL,ETL Development,Daily,Database,ETL_START
+ETL_MAPPING,ETL,ETL Mapping,Daily,Database,ETL_DEVELOPMENT
+ETL_MONITORING,ETL,ETL Monitoring,Continuous,Database,ETL_DEVELOPMENT
+ETL_SUPPORT,ETL,ETL Production Support,Continuous,Database,ETL_MONITORING
+
+DATA_ENGINEERING,Data Engineering,Data Engineering,Daily,Cloud,DATA_ENGINEERING_START
+DATA_PIPELINE,Data Engineering,Data Pipeline Development,Daily,Cloud,DATA_ENGINEERING
+DATA_WAREHOUSE,Data Warehouse,Data Warehouse Development,Daily,Cloud,DATA_PIPELINE
+DATA_MODELING,Data Engineering,Data Modeling,Daily,Cloud,DATA_PIPELINE
+
+POWERBI_ANALYTICS,Power BI,Power BI Analytics,Daily,Microsoft 365,POWERBI_START
+POWERBI_DAX,Power BI,DAX Development,Daily,Microsoft 365,POWERBI_ANALYTICS
+POWERBI_ETL,Power BI,Power BI Data Transformation,Daily,Microsoft 365,POWERBI_ANALYTICS
+POWERBI_KPI,Power BI,KPI Dashboard,Daily,Microsoft 365,POWERBI_DASHBOARD
+
+TABLEAU_ANALYTICS,Tableau,Tableau Analytics,Daily,Cloud,TABLEAU_START
+TABLEAU_DASHBOARD,Tableau,Tableau Dashboard,Daily,Cloud,TABLEAU_ANALYTICS
+TABLEAU_REPORTING,Tableau,Tableau Reporting,Daily,Cloud,TABLEAU_DASHBOARD
+
+SPARK_DATA,Apache Spark,Big Data Processing,Daily,Cloud,SPARK_START
+SPARK_ETL,Apache Spark,Spark ETL,Daily,Cloud,SPARK_DATA
+HADOOP_DATA,Hadoop,Big Data Processing,Daily,Cloud,HADOOP_START
+KAFKA_STREAMING,Apache Kafka,Data Streaming,Continuous,Cloud,KAFKA_START
+AIRFLOW_ETL,Apache Airflow,Workflow Orchestration,Daily,Cloud,AIRFLOW_START
+AWS_CLOUD,AWS,AWS Cloud,Daily,Cloud,AWS_START
+AWS_EC2,AWS,AWS EC2,Daily,Cloud,AWS_CLOUD
+AWS_S3,AWS,AWS S3,Daily,Cloud,AWS_CLOUD
+AWS_LAMBDA,AWS,AWS Lambda,Daily,Cloud,AWS_CLOUD
+AWS_RDS,AWS,AWS RDS,Daily,Cloud,AWS_CLOUD
+AWS_CLOUDWATCH,AWS,AWS CloudWatch,Continuous,Cloud,AWS_CLOUD
+AWS_IAM,AWS,AWS IAM,Daily,Cloud,AWS_CLOUD
+
+AZURE_CLOUD,Azure,Azure Cloud,Daily,Cloud,AZURE_START
+AZURE_VM,Azure,Azure Virtual Machines,Daily,Cloud,AZURE_CLOUD
+AZURE_STORAGE,Azure,Azure Storage,Daily,Cloud,AZURE_CLOUD
+AZURE_FUNCTION,Azure,Azure Functions,Daily,Cloud,AZURE_CLOUD
+AZURE_MONITOR,Azure,Azure Monitor,Continuous,Cloud,AZURE_CLOUD
+AZURE_AD,Azure,Azure Active Directory,Daily,Cloud,AZURE_CLOUD
+
+GCP_CLOUD,Google Cloud,GCP Cloud,Daily,Cloud,GCP_START
+GCP_COMPUTE,Google Cloud,GCP Compute Engine,Daily,Cloud,GCP_CLOUD
+GCP_STORAGE,Google Cloud,GCP Storage,Daily,Cloud,GCP_CLOUD
+GCP_BIGQUERY,Google Cloud,BigQuery,Daily,Cloud,GCP_CLOUD
+
+DOCKER_CONTAINER,Docker,Container Management,Daily,Linux,DOCKER_START
+DOCKER_IMAGE,Docker,Docker Images,Daily,Linux,DOCKER_CONTAINER
+DOCKER_COMPOSE,Docker,Docker Compose,Daily,Linux,DOCKER_CONTAINER
+
+KUBERNETES_CLUSTER,Kubernetes,Kubernetes Cluster Management,Daily,Linux,KUBERNETES_START
+KUBERNETES_DEPLOYMENT,Kubernetes,Kubernetes Deployment,Daily,Linux,KUBERNETES_CLUSTER
+KUBERNETES_SERVICE,Kubernetes,Kubernetes Services,Daily,Linux,KUBERNETES_CLUSTER
+KUBERNETES_MONITORING,Kubernetes,Kubernetes Monitoring,Continuous,Linux,KUBERNETES_CLUSTER
+
+TERRAFORM_INFRA,Terrraform,Infrastructure as Code,Daily,Cloud,TERRAFORM_START
+TERRAFORM_AWS,Terrraform,Terrraform AWS Infrastructure,Daily,Cloud,TERRAFORM_INFRA
+TERRAFORM_AZURE,Terrraform,Terrraform Azure Infrastructure,Daily,Cloud,TERRAFORM_INFRA
+
+ANSIBLE_AUTOMATION,Ansible,Infrastructure Automation,Daily,Linux,ANSIBLE_START
+ANSIBLE_CONFIGURATION,Ansible,Configuration Management,Daily,Linux,ANSIBLE_AUTOMATION
+
+JENKINS_CICD,Jenkins,CI/CD Pipeline,Daily,Cloud,JENKINS_START
+JENKINS_BUILD,Jenkins,Build Automation,Daily,Cloud,JENKINS_CICD
+JENKINS_DEPLOYMENT,Jenkins,Application Deployment,Daily,Cloud,JENKINS_CICD
+
+GITHUB_ACTIONS,GitHub Actions,CI/CD Automation,Daily,Cloud,GITHUB_ACTIONS_START
+GITLAB_CICD,GitLab,CI/CD Pipeline,Daily,Cloud,GITLAB_START
+AZURE_DEVOPS,Azure DevOps,DevOps Pipeline,Daily,Cloud,AZURE_DEVOPS_START
+
+HELM_KUBERNETES,Helm,Kubernetes Package Management,Daily,Cloud,KUBERNETES_CLUSTER
+ARGOCD_DEPLOYMENT,ArgoCD,Continuous Deployment,Continuous,Cloud,ARGOCD_START
+CYBERSECURITY,Cybersecurity,Security Operations,Continuous,Security,SECURITY_START
+SOC_ANALYST,Cybersecurity,SOC Monitoring,Continuous,Security,CYBERSECURITY
+SECURITY_MONITORING,Cybersecurity,Security Monitoring,Continuous,Security,CYBERSECURITY
+INCIDENT_RESPONSE,Cybersecurity,Security Incident Response,Continuous,Security,SOC_ANALYST
+VULNERABILITY_MANAGEMENT,Cybersecurity,Vulnerability Management,Daily,Security,SECURITY_MONITORING
+
+IAM_SECURITY,IAM,Identity and Access Management,Daily,Security,IAM_START
+IAM_ACCESS,IAM,Access Management,Daily,Security,IAM_SECURITY
+IAM_AUTHENTICATION,IAM,Authentication Management,Daily,Security,IAM_SECURITY
+
+SIEM_SECURITY,SIEM,Security Information and Event Management,Continuous,Security,SIEM_START
+SIEM_MONITORING,SIEM,SIEM Monitoring,Continuous,Security,SIEM_SECURITY
+
+SPLUNK_MONITORING,Splunk,Splunk Monitoring,Continuous,Linux,SPLUNK_START
+SPLUNK_DASHBOARD,Splunk,Splunk Dashboard,Daily,Linux,SPLUNK_MONITORING
+SPLUNK_ALERT,Splunk,Splunk Alert Management,Continuous,Linux,SPLUNK_MONITORING
+
+DYNATRACE_MONITORING,Dynatrace,Application Monitoring,Continuous,Cloud,DYNATRACE_START
+DYNATRACE_APM,Dynatrace,Application Performance Monitoring,Continuous,Cloud,DYNATRACE_MONITORING
+
+NEW_RELIC_MONITORING,New Relic,Application Monitoring,Continuous,Cloud,NEW_RELIC_START
+NEW_RELIC_APM,New Relic,Application Performance Monitoring,Continuous,Cloud,NEW_RELIC_MONITORING
+
+PROMETHEUS_MONITORING,Prometheus,Infrastructure Monitoring,Continuous,Linux,PROMETHEUS_START
+GRAFANA_DASHBOARD,Grafana,Monitoring Dashboard,Continuous,Linux,GRAFANA_START
+
+LOG_MONITORING,Log Monitoring,Log Monitoring,Continuous,Linux,LOG_START
+APPLICATION_MONITORING,Application Monitoring,Application Health Monitoring,Continuous,Cloud,APPLICATION_MONITORING_START
+INFRA_MONITORING,Infrastructure Monitoring,Infrastructure Monitoring,Continuous,Linux,INFRA_MONITORING_START
+IT_SUPPORT,IT Support,IT Technical Support,Daily,Windows,IT_SUPPORT_START
+HELP_DESK,Help Desk,Help Desk Support,Daily,Windows,HELP_DESK_START
+SERVICE_DESK,Service Desk,Service Desk Support,Daily,ITSM,SERVICE_DESK_START
+DESKTOP_SUPPORT,Desktop Support,Desktop Support,Daily,Windows,DESKTOP_SUPPORT_START
+TECHNICAL_SUPPORT,Technical Support,Technical Support,Daily,Windows,TECHNICAL_SUPPORT_START
+APPLICATION_SUPPORT,Application Support,Application Support,Continuous,Windows,APPLICATION_SUPPORT_START
+PRODUCTION_SUPPORT,Production Support,Production Application Support,Continuous,Linux,PRODUCTION_SUPPORT_START
+L1_SUPPORT,L1 Support,Level 1 Support,Daily,Windows,L1_SUPPORT_START
+L2_SUPPORT,L2 Support,Level 2 Support,Daily,Linux,L2_SUPPORT_START
+L3_SUPPORT,L3 Support,Level 3 Support,Daily,Linux,L3_SUPPORT_START
+
+BUSINESS_ANALYST,Business Analyst,Business Analysis,Daily,Cloud,BUSINESS_ANALYST_START
+IT_BUSINESS_ANALYST,IT Business Analyst,IT Business Analysis,Daily,Cloud,BUSINESS_ANALYST
+REQUIREMENT_ANALYSIS,Business Analysis,Requirement Analysis,Daily,Cloud,BUSINESS_ANALYST
+PROCESS_ANALYSIS,Business Analysis,Process Analysis,Daily,Cloud,BUSINESS_ANALYST
+
+OPERATIONS_ANALYST,Operations,Operations Analysis,Daily,Cloud,OPERATIONS_START
+IT_OPERATIONS,IT Operations,IT Operations Management,Continuous,Cloud,IT_OPERATIONS_START
+APPLICATION_OPERATIONS,Application Operations,Application Operations,Continuous,Cloud,IT_OPERATIONS
+BATCH_OPERATIONS,Batch Operations,Batch Job Operations,Continuous,Linux,BATCH_OPERATIONS_START
+JOB_SCHEDULING,Job Scheduling,Job Scheduling Operations,Continuous,Linux,JOB_SCHEDULING_START
+
+INCIDENT_MANAGEMENT,ITSM,Incident Management,Continuous,ITSM,ITSM_START
+PROBLEM_MANAGEMENT,ITSM,Problem Management,Daily,ITSM,INCIDENT_MANAGEMENT
+CHANGE_MANAGEMENT,ITSM,Change Management,Daily,ITSM,ITSM_START
+SERVICE_REQUEST,ITSM,Service Request Management,Daily,ITSM,ITSM_START
+ITIL_SUPPORT,ITIL,ITIL Service Management,Daily,ITSM,ITIL_START
+
+TECHNICAL_DOCUMENTATION,Documentation,Technical Documentation,Daily,Cloud,DOCUMENTATION_START
+KNOWLEDGE_MANAGEMENT,Knowledge Management,Knowledge Base Management,Daily,Cloud,KNOWLEDGE_START
+REPORTING_ANALYST,Reporting,IT Reporting,Daily,Cloud,REPORTING_START
+MIS_REPORTING,MIS,Management Information Reporting,Daily,Microsoft 365,MIS_START
+
+PROJECT_COORDINATOR,Project Management,Project Coordination,Daily,Cloud,PROJECT_START
+IT_PROJECT_SUPPORT,Project Management,IT Project Support,Daily,Cloud,PROJECT_COORDINATOR
+RELEASE_MANAGEMENT,Release Management,Application Release Management,Daily,Cloud,RELEASE_START
+
+CUSTOMER_SUPPORT,Customer Support,Customer Technical Support,Daily,Cloud,CUSTOMER_SUPPORT_START
+CLIENT_SUPPORT,Client Support,Client Technical Support,Daily,Cloud,CLIENT_SUPPORT_START
+SOFTWARE_TESTING,Software Testing,Software Testing,Daily,Cloud,TESTING_START
+QA_TESTING,QA,Quality Assurance Testing,Daily,Cloud,QA_START
+MANUAL_TESTING,Manual Testing,Manual Testing,Daily,Cloud,QA_TESTING
+AUTOMATION_TESTING,Automation Testing,Test Automation,Daily,Cloud,QA_TESTING
+SELENIUM_TESTING,Selenium,Selenium Automation,Daily,Cloud,SELENIUM_START
+API_TESTING_QA,API Testing,API Quality Testing,Daily,Cloud,API_TESTING
+REGRESSION_TESTING,Testing,Regression Testing,Daily,Cloud,SOFTWARE_TESTING
+UNIT_TESTING,Testing,Unit Testing,Daily,Cloud,SOFTWARE_TESTING
+PERFORMANCE_TESTING,Testing,Performance Testing,Daily,Cloud,SOFTWARE_TESTING
+
+JIRA_MANAGEMENT,Jira,Issue and Project Management,Daily,Cloud,JIRA_START
+JIRA_TICKETS,Jira,Ticket Management,Daily,Cloud,JIRA_MANAGEMENT
+JIRA_WORKFLOW,Jira,Workflow Management,Daily,Cloud,JIRA_MANAGEMENT
+CONFLUENCE_DOCUMENTATION,Confluence,Technical Documentation,Daily,Cloud,CONFLUENCE_START
+CONFLUENCE_KNOWLEDGE,Confluence,Knowledge Management,Daily,Cloud,CONFLUENCE_DOCUMENTATION
+
+SALESFORCE_CRM,Salesforce,CRM Management,Daily,Cloud,SALESFORCE_START
+SALESFORCE_SUPPORT,Salesforce,Salesforce Support,Daily,Cloud,SALESFORCE_CRM
+SALESFORCE_ADMIN,Salesforce,Salesforce Administration,Daily,Cloud,SALESFORCE_CRM
+
+WORKDAY_HR,Workday,HR Management,Daily,Cloud,WORKDAY_START
+WORKDAY_SUPPORT,Workday,Workday Support,Daily,Cloud,WORKDAY_HR
+SAP_SUCCESSFACTORS,SAP SuccessFactors,HR Management,Daily,Cloud,SAP_SUCCESSFACTORS_START
+ORACLE_EBS,Oracle EBS,Enterprise Application Support,Daily,Cloud,ORACLE_EBS_START
+DYNAMICS_365,Microsoft Dynamics 365,CRM and ERP Management,Daily,Cloud,DYNAMICS_START
+
+SERVICENOW_ITSM,ServiceNow,IT Service Management,Continuous,Cloud,SERVICENOW_START
+SERVICENOW_INCIDENT,ServiceNow,Incident Management,Continuous,Cloud,SERVICENOW_ITSM
+SERVICENOW_CHANGE,ServiceNow,Change Management,Daily,Cloud,SERVICENOW_ITSM
+SERVICENOW_WORKFLOW,ServiceNow,Workflow Automation,Daily,Cloud,SERVICENOW_ITSM
+
+BMC_HELIX_ITSM,BMC Helix,IT Service Management,Continuous,Cloud,BMC_HELIX_START
+BMC_HELIX_SUPPORT,BMC Helix,Application Support,Continuous,Cloud,BMC_HELIX_ITSM
+
+CONTROL_M_BATCH,Control-M,Control-M Batch Operations,Continuous,Linux,CONTROL_M_START
+CONTROL_M_SCHEDULING,Control-M,Job Scheduling,Continuous,Linux,CONTROL_M_BATCH
+CONTROL_M_SUPPORT,Control-M,Production Support,Continuous,Linux,CONTROL_M_BATCH
